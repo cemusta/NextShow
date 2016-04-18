@@ -1,0 +1,88 @@
+﻿<Window x:Class="NextShow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NextShow"
+        mc:Ignorable="d"
+        Title="Next Show In" Height="350" Width="525" Icon="favicon.png" Topmost="True" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None">
+
+
+
+    <Window.Resources>
+        <Storyboard x:Key="blinkAnimation" Duration="0:0:5" >
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Background).(SolidColorBrush.Color)"
+                                      Storyboard.TargetName="TitleTextBlock"
+                                      AutoReverse="True">
+                <ColorAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteColorKeyFrame KeyTime="0:0:0" Value="White"/>
+                    <DiscreteColorKeyFrame KeyTime="0:0:1" Value="Black"/>
+                    <DiscreteColorKeyFrame KeyTime="0:0:2" Value="White"/>
+                    <DiscreteColorKeyFrame KeyTime="0:0:3" Value="Black"/>
+                    <DiscreteColorKeyFrame KeyTime="0:0:4" Value="White"/>
+                </ColorAnimationUsingKeyFrames.KeyFrames>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                      Storyboard.TargetName="TitleTextBlock"
+                                      AutoReverse="True">
+                <ColorAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteColorKeyFrame KeyTime="0:0:0" Value="Black"/>
+                    <DiscreteColorKeyFrame KeyTime="0:0:1" Value="White"/>
+                    <DiscreteColorKeyFrame KeyTime="0:0:2" Value="Black"/>
+                    <DiscreteColorKeyFrame KeyTime="0:0:3" Value="White"/>
+                    <DiscreteColorKeyFrame KeyTime="0:0:4" Value="Black"/>
+                </ColorAnimationUsingKeyFrames.KeyFrames>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="66*"/>
+
+        </Grid.RowDefinitions>
+        <Image x:Name="image" Source="Reality_Logo.png"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="33*"/>
+
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+
+                <Viewbox StretchDirection="Both" Stretch="Uniform" Margin="0,0,0,0" Grid.Row="0" >
+                    <TextBlock x:Name="nextshow" Background="White"  FontSize="8" Margin="0,-2,-1,-0.6" Text="Next show" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                </Viewbox>
+                <Viewbox StretchDirection="Both" Stretch="Uniform" Margin="0,0,0,0" Grid.Row="1" >
+                    <TextBlock x:Name="begins" Background="White"  FontSize="8" Margin="0,0,0,0.2" Text="Begins in" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"  >
+             
+
+                    </TextBlock>
+                </Viewbox>
+            </Grid>
+
+            <Viewbox Grid.Row="1" Grid.Column="0"   StretchDirection="Both" Stretch="Uniform" Margin="0,0,0,0" >
+                <local:MyTextBlock  x:Name="timer" Background="White"  FontSize="8" Margin="0" Text="" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <local:MyTextBlock.Triggers>
+                        <!--<EventTrigger RoutedEvent="">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <StaticResource ResourceKey="blinkAnimation"/>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>-->
+                    </local:MyTextBlock.Triggers>
+                </local:MyTextBlock>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</Window>
